@@ -173,9 +173,8 @@ Formatter.prototype.format = function (record) {
     , offset = 0;
   return (this.fmt
     .replace(/%\((\w+)\)(\w)/g, function (match, name, format) {
-      if (name === 'date')
-        return self.formatDate(record.date);
-      return self.colorVariable(name, record[name]);
+      var res = name === 'date' ? self.formatDate(record.date) : record[name];
+      return this.color ? this.colorVariable(name, res) : res
     })
     .replace(/%(\w)/g, function (match, format) {
       if (record.args.length && offset < record.args.length )
