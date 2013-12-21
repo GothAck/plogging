@@ -18,7 +18,7 @@ Formatter.prototype.color - set to false by default, set to true to introduce AN
 ### Basic setup & root logger
 
 ```javascript
-var logging = require('logging')
+var logging = require('plogging')
   , logger  = logging.getLogger();
 
 var MyObject = { name: 'Greg' }
