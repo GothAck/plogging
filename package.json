@@ -19,5 +19,9 @@
   "license": "BSD-2-Clause",
   "bugs": {
     "url": "https://github.com/GothAck/plogging/issues"
+  },
+  "dependencies": {
+    "colors": "~0.6.2",
+    "moment": "~2.4.0"
   }
 }
