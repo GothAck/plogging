@@ -1,0 +1,23 @@
+{
+  "name": "plogging",
+  "version": "0.0.1",
+  "description": "Python style logging for Node.js",
+  "main": "logging.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/GothAck/plogging.git"
+  },
+  "keywords": [
+    "logging",
+    "python",
+    "logger"
+  ],
+  "author": "Greg \"GothAck\" Miell <greg@greg-net.co.uk>",
+  "license": "BSD-2-Clause",
+  "bugs": {
+    "url": "https://github.com/GothAck/plogging/issues"
+  }
+}
