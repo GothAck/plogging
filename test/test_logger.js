@@ -131,18 +131,9 @@ describe('Logger', function () {
   describe('Logger.filter', function () {
     describe('with no filters', function () {
       var logger = new Logger;
-      before(function () {
-        sinon.spy(logger._filters, 'every');
-      });
-      after(function () {
-        logger._filters.every.restore();
-      })
       it('returns true', function () {
         logger.filter({})
       });
-      it('does not call every', function () {
-        assert(! logger._filters.every.called);
-      })
     })
   });
 });
