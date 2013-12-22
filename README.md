@@ -1,5 +1,7 @@
 # plogging
 
+[![Build Status](https://travis-ci.org/GothAck/plogging.png?branch=master)](https://travis-ci.org/GothAck/plogging)
+
 Python style logging for Node.js
 
 Node.js has a multitude of loggers, log handlers, log shippers, etc., etc., etc.. however there are people who know the Python logging library inside out, it'd be nice to do similar things in Node.
