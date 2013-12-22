@@ -2,7 +2,7 @@
   "name": "plogging",
   "version": "0.0.2",
   "description": "Python style logging for Node.js",
-  "main": "logging.js",
+  "main": "lib/logging.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
