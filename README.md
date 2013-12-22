@@ -1,6 +1,7 @@
 # plogging
 
 [![Build Status](https://travis-ci.org/GothAck/plogging.png?branch=master)](https://travis-ci.org/GothAck/plogging)
+[![Coverage Status](https://coveralls.io/repos/GothAck/plogging/badge.png?branch=master)](https://coveralls.io/r/GothAck/plogging?branch=master)
 
 Python style logging for Node.js
 
