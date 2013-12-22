@@ -36,6 +36,9 @@
   "devDependencies": {
     "mocha": "~1.16.1",
     "better-assert": "~1.0.0",
-    "sinon": "~1.7.3"
+    "sinon": "~1.7.3",
+    "mocha-lcov-reporter": "0.0.1",
+    "blanket": "~1.1.6",
+    "coveralls": "~2.6.1"
   }
 }
