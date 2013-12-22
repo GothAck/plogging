@@ -4,7 +4,7 @@
   "description": "Python style logging for Node.js",
   "main": "lib/logging.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha"
   },
   "repository": {
     "type": "git",
@@ -23,5 +23,10 @@
   "dependencies": {
     "colors": "~0.6.2",
     "moment": "~2.4.0"
+  },
+  "devDependencies": {
+    "mocha": "~1.16.1",
+    "better-assert": "~1.0.0",
+    "sinon": "~1.7.3"
   }
 }
