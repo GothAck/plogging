@@ -56,6 +56,7 @@ exports.Logger = Logger;
 Logger.prototype.levels = ['debug', 'info', 'warning', 'error'];
 
 Logger.prototype.getLogger = function (namespace) {
+  namespace = namespace || []
   if (! Array.isArray(namespace))
     namespace = namespace.split('.');
   return getLogger(this.namespace_array.concat(namespace));
