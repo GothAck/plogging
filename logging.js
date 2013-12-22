@@ -21,7 +21,7 @@ function Logger (namespace) {
   if (Array.isArray(namespace))
     namespace = namespace.join('.');
   var namespace_array = namespace.split('.').filter(Boolean)
-    , name = namespace.slice(-1)[0] || '';
+    , name = namespace_array.slice(-1)[0] || '<root>';
 
   Object.defineProperties(this, {
       name: {
@@ -46,8 +46,6 @@ function Logger (namespace) {
         enumerable: false, writable: true, value: null
       }
   })
-  this.namespace = namespace.split('.').filter(Boolean);
-  this.name = this.namespace.slice(-1)[0] || '';
   this.propagate = true;
   var self = this;
   self.levels.forEach(function (lvl) {
