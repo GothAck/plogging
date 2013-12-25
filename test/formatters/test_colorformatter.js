@@ -1,5 +1,6 @@
 var sinon = require('sinon')
   , assert = require('better-assert')
+  , colors = require('colors')
   , logging = require('../../lib/logging')
   , ColorFormatter = logging.formatters.ColorFormatter;
 
@@ -46,10 +47,41 @@ describe('ColorFormatter', function () {
       formatter.format(111);
       assert(ColorFormatter.super_.prototype.format.calledOnce);
       assert(formatter._formatter.bind.calledOnce)
+      assert(formatter._formatter.bind.calledWithExactly(formatter));
       var bound = formatter._formatter.bind.returnValues[0];
       assert(ColorFormatter.super_.prototype.format.calledWithExactly(
         111, bound
       ));
+    });
+  });
+  describe('#_formatter()', function () {
+    beforeEach(function () {
+      Object.keys(colors).forEach(function (key) {
+        if (colors[key] instanceof Function)
+          sinon.spy(colors, key);
+      });
+    });
+    afterEach(function () {
+      Object.keys(colors).forEach(function (key) {
+        if (colors[key] instanceof Function)
+          colors[key].restore();
+      });
+    });
+    describe('default _colordefs', function () {
+      var formatter = new ColorFormatter;
+      formatter.enabled = true;
+      it('error calls red', function () {
+        var res = formatter._formatter('lvl', 'error');
+        assert(colors.red.calledOnce);
+      });
+      it('warning calls yellow', function () {
+        var res = formatter._formatter('lvl', 'warning');
+        assert(colors.yellow.calledOnce);
+      });
+      it('info calls green', function () {
+        var res = formatter._formatter('lvl', 'info');
+        assert(colors.green.calledOnce);
+      });
     });
   });
 
