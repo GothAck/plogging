@@ -1,0 +1,56 @@
+var sinon = require('sinon')
+  , assert = require('better-assert')
+  , logging = require('../../lib/logging')
+  , ColorFormatter = logging.formatters.ColorFormatter;
+
+describe('ColorFormatter', function () {
+  describe('init', function () {
+    describe('super', function () {
+      beforeEach(function () {
+        sinon.spy(ColorFormatter, 'super_');
+      });
+      afterEach(function () {
+        ColorFormatter.super_.restore();
+      });
+      it('calls', function () {
+        new ColorFormatter('rar', 'lala');
+        assert(ColorFormatter.super_.calledOnce);
+      });
+    });
+    describe('defaults', function () {
+      var formatter = new ColorFormatter;
+      it('has default colordefs', function () {
+        assert(formatter._colordefs === ColorFormatter.prototype._colordefs)
+      });
+    });
+    describe('override', function () {
+      var formatter = new ColorFormatter(1, 2, 3);
+      it('has overridden values', function () {
+        assert(1 === formatter.fmt);
+        assert(2 === formatter.datefmt);
+        assert(3 === formatter._colordefs);
+      });
+    });
+  });
+  describe('#format()', function () {
+    var formatter = new ColorFormatter;
+    beforeEach(function () {
+      sinon.spy(formatter._formatter, 'bind');
+      sinon.stub(ColorFormatter.super_.prototype, 'format');
+    });
+    afterEach(function () {
+      formatter._formatter.bind.restore();
+      ColorFormatter.super_.prototype.format.restore();
+    });
+    it('calls super#format() with bound function', function () {
+      formatter.format(111);
+      assert(ColorFormatter.super_.prototype.format.calledOnce);
+      assert(formatter._formatter.bind.calledOnce)
+      var bound = formatter._formatter.bind.returnValues[0];
+      assert(ColorFormatter.super_.prototype.format.calledWithExactly(
+        111, bound
+      ));
+    });
+  });
+
+});
