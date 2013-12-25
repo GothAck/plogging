@@ -6,6 +6,19 @@ var sinon = require('sinon')
 describe('Logger', function () {
 
   describe('init', function () {
+    describe('called without new', function () {
+      before(function () {
+        sinon.stub(logging, 'getLogger');
+      });
+      after(function () {
+        logging.getLogger.restore();
+      });
+      it('calls getLogger', function () {
+        Logger('rar.lala.here');
+        assert(logging.getLogger.calledOnce);
+        assert(logging.getLogger.calledWithExactly('rar.lala.here'));
+      });
+    });
     describe('no namespace', function () {
       var logger = new Logger
       it('should default namespace to \'\'', function () {
