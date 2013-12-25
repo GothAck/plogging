@@ -1,6 +1,6 @@
 {
   "name": "plogging",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Python style logging for Node.js",
   "main": "lib/logging.js",
   "scripts": {
