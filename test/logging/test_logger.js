@@ -1,6 +1,6 @@
 var sinon = require('sinon')
   , assert = require('better-assert')
-  , logging = require('../lib/logging')
+  , logging = require('../../lib/logging')
   , Logger = logging.Logger;
 
 describe('Logger', function () {
