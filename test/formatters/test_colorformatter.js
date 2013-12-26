@@ -83,6 +83,47 @@ describe('ColorFormatter', function () {
         assert(colors.green.calledOnce);
       });
     });
+    describe('disabled', function () {
+      var formatter = new ColorFormatter;
+      formatter.enabled = false;
+      it('returns same value', function () {
+        var res = formatter._formatter('lvl', 'error');
+        assert(res === 'error');
+      });
+    });
+    describe('enabled', function () {
+      var formatter = new ColorFormatter;
+      formatter.enabled = true;
+      formatter._colordefs = {
+          simple: ['red']
+        , value: {
+              thing: ['green']
+          }
+        , empty: []
+        , empty_value: {
+              other: []
+          }
+      }
+      it('simple format calls red', function () {
+        formatter._formatter('simple', 'blah');
+        formatter._formatter('simple', 'rar');
+        assert(colors.red.calledTwice);
+      });
+      it('value format calls green with correct value', function () {
+        formatter._formatter('value', 'thing');
+        formatter._formatter('value', 'other');
+        formatter._formatter('value', 'rar');
+        assert(colors.green.calledOnce);
+      });
+      it('empty retuns unaltered value', function () {
+        var res = formatter._formatter('empty', 'thing');
+        assert(res === 'thing');
+      });
+      it('empty_value returns unaltered value', function () {
+        var res = formatter._formatter('empty_value', 'other');
+        assert(res === 'other');
+      })
+    });
   });
 
 });
